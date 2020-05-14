@@ -30,7 +30,7 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     public static class Rfc2812
     {

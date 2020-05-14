@@ -31,7 +31,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     public class NonRfcChannel : Channel
     {

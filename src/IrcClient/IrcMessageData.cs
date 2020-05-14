@@ -28,7 +28,7 @@
 
 using System.Collections.Generic;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     /// <summary>
     /// This class contains an IRC message in a parsed form

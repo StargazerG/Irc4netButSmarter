@@ -27,7 +27,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     /// <summary>
     /// Dcc Send Connection, Filetransfer

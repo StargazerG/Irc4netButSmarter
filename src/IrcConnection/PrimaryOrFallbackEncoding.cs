@@ -23,7 +23,7 @@
 using System;
 using System.Text;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     internal class PrimaryOrFallbackEncoding : Encoding
     {

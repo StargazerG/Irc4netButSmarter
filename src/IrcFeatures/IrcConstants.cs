@@ -22,7 +22,7 @@
  */
 
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     /// <summary>
     /// Special IRC Charakters

@@ -29,7 +29,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     [Serializable]
     public class SmartIrc4netException : ApplicationException

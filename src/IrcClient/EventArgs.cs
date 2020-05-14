@@ -29,7 +29,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     public class ActionEventArgs : CtcpEventArgs
     {

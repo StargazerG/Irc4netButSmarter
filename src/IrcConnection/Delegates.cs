@@ -26,9 +26,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace Meebey.SmartIrc4net
+using System.Threading.Tasks;
+
+namespace StargazerG.Irc4NetButSmarter
 {
-    public delegate void ReadLineEventHandler(object sender, ReadLineEventArgs e);
-    public delegate void WriteLineEventHandler(object sender, WriteLineEventArgs e);
-    public delegate void AutoConnectErrorEventHandler(object sender, AutoConnectErrorEventArgs e);
+    public delegate Task ReadLineEventHandler(object sender, ReadLineEventArgs e);
+    public delegate Task WriteLineEventHandler(object sender, WriteLineEventArgs e);
+    public delegate Task AutoConnectErrorEventHandler(object sender, AutoConnectErrorEventArgs e);
 }

@@ -23,7 +23,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     /// <summary>
     /// Convenience extension methods to System.Collections.Concurrent.ConcurrentDictionary

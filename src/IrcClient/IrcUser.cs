@@ -28,7 +28,7 @@
 
 using System.Collections.Generic;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     /// <summary>
     /// This class manages the user information.

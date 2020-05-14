@@ -21,30 +21,32 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace Meebey.SmartIrc4net
+using System.Threading.Tasks;
+
+namespace StargazerG.Irc4NetButSmarter
 {
     /// <summary>
     /// Delegates to handle individual ctcp commands
     /// </summary>
-    public delegate void CtcpDelegate(CtcpEventArgs eventArgs);
+    public delegate Task CtcpDelegate(CtcpEventArgs eventArgs);
 
     /// <summary>
     /// Delegate for the Standard DCC EVent
     /// </summary>
-    public delegate void DccConnectionHandler(object sender, DccEventArgs e);
+    public delegate Task DccConnectionHandler(object sender, DccEventArgs e);
 
     /// <summary>
     /// Delegate for DCC Events involving Sending or Receiving Lines of Text
     /// </summary>
-    public delegate void DccChatLineHandler(object sender, DccChatEventArgs e);
+    public delegate Task DccChatLineHandler(object sender, DccChatEventArgs e);
 
     /// <summary>
     /// Delegate for DCC EVents involving Sending or Receiving Packets of Binary Data
     /// </summary>
-    public delegate void DccSendPacketHandler(object sender, DccSendEventArgs e);
+    public delegate Task DccSendPacketHandler(object sender, DccSendEventArgs e);
 
     /// <summary>
     /// Special Delegate for Incoming Requests to Receive a File
     /// </summary>
-    public delegate void DccSendRequestHandler(object sender, DccSendRequestEventArgs e);
+    public delegate Task DccSendRequestHandler(object sender, DccSendRequestEventArgs e);
 }

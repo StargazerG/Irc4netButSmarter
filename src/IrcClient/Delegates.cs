@@ -26,38 +26,40 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace Meebey.SmartIrc4net
+using System.Threading.Tasks;
+
+namespace StargazerG.Irc4NetButSmarter
 {
-    public delegate void IrcEventHandler(object sender, IrcEventArgs e);
-    public delegate void CtcpEventHandler(object sender, CtcpEventArgs e);
-    public delegate void ActionEventHandler(object sender, ActionEventArgs e);
-    public delegate void ErrorEventHandler(object sender, ErrorEventArgs e);
-    public delegate void PingEventHandler(object sender, PingEventArgs e);
-    public delegate void KickEventHandler(object sender, KickEventArgs e);
-    public delegate void JoinEventHandler(object sender, JoinEventArgs e);
-    public delegate void NamesEventHandler(object sender, NamesEventArgs e);
-    public delegate void ListEventHandler(object sender, ListEventArgs e);
-    public delegate void PartEventHandler(object sender, PartEventArgs e);
-    public delegate void InviteEventHandler(object sender, InviteEventArgs e);
-    public delegate void OwnerEventHandler(object sender, OwnerEventArgs e);
-    public delegate void DeownerEventHandler(object sender, DeownerEventArgs e);
-    public delegate void ChannelAdminEventHandler(object sender, ChannelAdminEventArgs e);
-    public delegate void DeChannelAdminEventHandler(object sender, DeChannelAdminEventArgs e);
-    public delegate void OpEventHandler(object sender, OpEventArgs e);
-    public delegate void DeopEventHandler(object sender, DeopEventArgs e);
-    public delegate void HalfopEventHandler(object sender, HalfopEventArgs e);
-    public delegate void DehalfopEventHandler(object sender, DehalfopEventArgs e);
-    public delegate void VoiceEventHandler(object sender, VoiceEventArgs e);
-    public delegate void DevoiceEventHandler(object sender, DevoiceEventArgs e);
-    public delegate void BanEventHandler(object sender, BanEventArgs e);
-    public delegate void UnbanEventHandler(object sender, UnbanEventArgs e);
-    public delegate void TopicEventHandler(object sender, TopicEventArgs e);
-    public delegate void TopicChangeEventHandler(object sender, TopicChangeEventArgs e);
-    public delegate void NickChangeEventHandler(object sender, NickChangeEventArgs e);
-    public delegate void QuitEventHandler(object sender, QuitEventArgs e);
-    public delegate void AwayEventHandler(object sender, AwayEventArgs e);
-    public delegate void WhoEventHandler(object sender, WhoEventArgs e);
-    public delegate void MotdEventHandler(object sender, MotdEventArgs e);
-    public delegate void PongEventHandler(object sender, PongEventArgs e);
-    public delegate void BounceEventHandler(object sender, BounceEventArgs e);
+    public delegate Task IrcEventHandler(object sender, IrcEventArgs e);
+    public delegate Task CtcpEventHandler(object sender, CtcpEventArgs e);
+    public delegate Task ActionEventHandler(object sender, ActionEventArgs e);
+    public delegate Task ErrorEventHandler(object sender, ErrorEventArgs e);
+    public delegate Task PingEventHandler(object sender, PingEventArgs e);
+    public delegate Task KickEventHandler(object sender, KickEventArgs e);
+    public delegate Task JoinEventHandler(object sender, JoinEventArgs e);
+    public delegate Task NamesEventHandler(object sender, NamesEventArgs e);
+    public delegate Task ListEventHandler(object sender, ListEventArgs e);
+    public delegate Task PartEventHandler(object sender, PartEventArgs e);
+    public delegate Task InviteEventHandler(object sender, InviteEventArgs e);
+    public delegate Task OwnerEventHandler(object sender, OwnerEventArgs e);
+    public delegate Task DeownerEventHandler(object sender, DeownerEventArgs e);
+    public delegate Task ChannelAdminEventHandler(object sender, ChannelAdminEventArgs e);
+    public delegate Task DeChannelAdminEventHandler(object sender, DeChannelAdminEventArgs e);
+    public delegate Task OpEventHandler(object sender, OpEventArgs e);
+    public delegate Task DeopEventHandler(object sender, DeopEventArgs e);
+    public delegate Task HalfopEventHandler(object sender, HalfopEventArgs e);
+    public delegate Task DehalfopEventHandler(object sender, DehalfopEventArgs e);
+    public delegate Task VoiceEventHandler(object sender, VoiceEventArgs e);
+    public delegate Task DevoiceEventHandler(object sender, DevoiceEventArgs e);
+    public delegate Task BanEventHandler(object sender, BanEventArgs e);
+    public delegate Task UnbanEventHandler(object sender, UnbanEventArgs e);
+    public delegate Task TopicEventHandler(object sender, TopicEventArgs e);
+    public delegate Task TopicChangeEventHandler(object sender, TopicChangeEventArgs e);
+    public delegate Task NickChangeEventHandler(object sender, NickChangeEventArgs e);
+    public delegate Task QuitEventHandler(object sender, QuitEventArgs e);
+    public delegate Task AwayEventHandler(object sender, AwayEventArgs e);
+    public delegate Task WhoEventHandler(object sender, WhoEventArgs e);
+    public delegate Task MotdEventHandler(object sender, MotdEventArgs e);
+    public delegate Task PongEventHandler(object sender, PongEventArgs e);
+    public delegate Task BounceEventHandler(object sender, BounceEventArgs e);
 }

@@ -26,7 +26,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     /// <summary>
     /// Baseclass for all DccConnections

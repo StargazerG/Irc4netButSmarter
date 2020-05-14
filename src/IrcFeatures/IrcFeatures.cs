@@ -20,7 +20,6 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,8 +27,9 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     /// <summary>
     /// Description of IrcFeatures2.
@@ -221,11 +221,11 @@ namespace Meebey.SmartIrc4net
         #endregion
 
         #region Private Methods
-        private void CtcpRequestsHandler(object sender, CtcpEventArgs e)
+        private async Task CtcpRequestsHandler(object sender, CtcpEventArgs e)
         {
             if (CtcpDelegates.ContainsKey(e.CtcpCommand))
             {
-                CtcpDelegates[e.CtcpCommand].Invoke(e);
+                await CtcpDelegates[e.CtcpCommand].Invoke(e);
             }
             else
             {
@@ -236,27 +236,27 @@ namespace Meebey.SmartIrc4net
         #endregion
 
         #region implemented ctcp delegates, can be overwritten by changing the ctcpDelagtes Dictionary
-        private void CtcpVersionDelegate(CtcpEventArgs e) => SendMessage(SendType.CtcpReply, e.Data.Nick, "VERSION " + (CtcpVersion ?? VersionString));
+        private async Task CtcpVersionDelegate(CtcpEventArgs e) => await SendMessage(SendType.CtcpReply, e.Data.Nick, "VERSION " + (CtcpVersion ?? VersionString));
 
-        private void CtcpClientInfoDelegate(CtcpEventArgs e)
+        private async Task CtcpClientInfoDelegate(CtcpEventArgs e)
         {
             string clientInfo = "CLIENTINFO";
             foreach (KeyValuePair<string, CtcpDelegate> kvp in CtcpDelegates)
             {
                 clientInfo = clientInfo + " " + kvp.Key.ToUpper();
             }
-            SendMessage(SendType.CtcpReply, e.Data.Nick, clientInfo);
+            await SendMessage(SendType.CtcpReply, e.Data.Nick, clientInfo);
         }
 
-        private void CtcpPingDelegate(CtcpEventArgs e)
+        private async Task CtcpPingDelegate(CtcpEventArgs e)
         {
             if (e.Data.Message.Length > 7)
             {
-                SendMessage(SendType.CtcpReply, e.Data.Nick, "PING " + e.Data.Message.Substring(6, (e.Data.Message.Length - 7)));
+                await SendMessage(SendType.CtcpReply, e.Data.Nick, "PING " + e.Data.Message.Substring(6, (e.Data.Message.Length - 7)));
             }
             else
             {
-                SendMessage(SendType.CtcpReply, e.Data.Nick, "PING");    //according to RFC, it should be PONG!
+                await SendMessage(SendType.CtcpReply, e.Data.Nick, "PING");    //according to RFC, it should be PONG!
             }
         }
 
@@ -264,33 +264,33 @@ namespace Meebey.SmartIrc4net
         ///  This is the correct Rfc Ping Delegate, which is not used because all other clients do not use the PING According to RfC
         /// </summary>
         /// <param name="e"></param>
-        private void CtcpRfcPingDelegate(CtcpEventArgs e)
+        private async Task CtcpRfcPingDelegate(CtcpEventArgs e)
         {
             if (e.Data.Message.Length > 7)
             {
-                SendMessage(SendType.CtcpReply, e.Data.Nick, "PONG " + e.Data.Message.Substring(6, (e.Data.Message.Length - 7)));
+                await SendMessage(SendType.CtcpReply, e.Data.Nick, "PONG " + e.Data.Message.Substring(6, (e.Data.Message.Length - 7)));
             }
             else
             {
-                SendMessage(SendType.CtcpReply, e.Data.Nick, "PONG");
+                await SendMessage(SendType.CtcpReply, e.Data.Nick, "PONG");
             }
         }
 
-        private void CtcpTimeDelegate(CtcpEventArgs e) => SendMessage(SendType.CtcpReply, e.Data.Nick, "TIME " + DateTime.Now.ToString("r"));
+        private async Task CtcpTimeDelegate(CtcpEventArgs e) => await SendMessage(SendType.CtcpReply, e.Data.Nick, "TIME " + DateTime.Now.ToString("r"));
 
-        private void CtcpUserInfoDelegate(CtcpEventArgs e) => SendMessage(SendType.CtcpReply, e.Data.Nick, "USERINFO " + (CtcpUserInfo ?? "No user info given."));
+        private async Task CtcpUserInfoDelegate(CtcpEventArgs e) => await SendMessage(SendType.CtcpReply, e.Data.Nick, "USERINFO " + (CtcpUserInfo ?? "No user info given."));
 
-        private void CtcpUrlDelegate(CtcpEventArgs e) => SendMessage(SendType.CtcpReply, e.Data.Nick, "URL " + (CtcpUrl ?? "http://www.google.com"));
+        private async Task CtcpUrlDelegate(CtcpEventArgs e) => await SendMessage(SendType.CtcpReply, e.Data.Nick, "URL " + (CtcpUrl ?? "http://www.google.com"));
 
-        private void CtcpSourceDelegate(CtcpEventArgs e) => SendMessage(SendType.CtcpReply, e.Data.Nick, "SOURCE " + (CtcpSource ?? "http://smartirc4net.meebey.net"));
+        private async Task CtcpSourceDelegate(CtcpEventArgs e) => await SendMessage(SendType.CtcpReply, e.Data.Nick, "SOURCE " + (CtcpSource ?? "http://smartirc4net.meebey.net"));
 
-        private void CtcpFingerDelegate(CtcpEventArgs e) => SendMessage(SendType.CtcpReply, e.Data.Nick, "FINGER Don't touch little Helga there! ");//SendMessage(SendType.CtcpReply, e.Data.Nick, "FINGER " + this.Realname + " (" + this.Email + ") Idle " + this.Idle + " seconds (" + ((string.IsNullOrEmpty(this.Reason))?this.Reason:"-") + ") " );
+        private async Task CtcpFingerDelegate(CtcpEventArgs e) => await SendMessage(SendType.CtcpReply, e.Data.Nick, "FINGER Don't touch little Helga there! ");//SendMessage(SendType.CtcpReply, e.Data.Nick, "FINGER " + this.Realname + " (" + this.Email + ") Idle " + this.Idle + " seconds (" + ((string.IsNullOrEmpty(this.Reason))?this.Reason:"-") + ") " );
 
-        private void CtcpDccDelegate(CtcpEventArgs e)
+        private async Task CtcpDccDelegate(CtcpEventArgs e)
         {
             if (e.Data.MessageArray.Length < 2)
             {
-                SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG DCC missing parameters");
+                await SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG DCC missing parameters");
             }
             else
             {
@@ -318,7 +318,7 @@ namespace Meebey.SmartIrc4net
                                     return;
                                 }
                             }
-                            SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG Invalid passive DCC");
+                            await SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG Invalid passive DCC");
                         }
                         else
                         {
@@ -335,7 +335,7 @@ namespace Meebey.SmartIrc4net
                                 return;
                             }
                         }
-                        SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG Invalid DCC RESUME");
+                        await SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG Invalid DCC RESUME");
                         break;
                     case "ACCEPT":
                         foreach (DccConnection dc in _DccConnections)
@@ -345,13 +345,13 @@ namespace Meebey.SmartIrc4net
                                 return;
                             }
                         }
-                        SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG Invalid DCC ACCEPT");
+                        await SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG Invalid DCC ACCEPT");
                         break;
                     case "XMIT":
-                        SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG DCC XMIT not implemented");
+                        await SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG DCC XMIT not implemented");
                         break;
                     default:
-                        SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG DCC " + e.CtcpParameter + " unavailable");
+                        await SendMessage(SendType.CtcpReply, e.Data.Nick, "ERRMSG DCC " + e.CtcpParameter + " unavailable");
                         break;
                 }
             }

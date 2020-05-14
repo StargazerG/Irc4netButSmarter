@@ -31,7 +31,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     public class Channel
     {
@@ -76,6 +76,6 @@ namespace Meebey.SmartIrc4net
         }
 
         public TimeSpan ActiveSyncTime { get; private set; }
-        public bool IsSycned { get; set; }
+        public bool IsSynced { get; set; }
     }
 }

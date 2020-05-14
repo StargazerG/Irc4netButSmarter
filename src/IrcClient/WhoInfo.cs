@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Meebey.SmartIrc4net
+namespace StargazerG.Irc4NetButSmarter
 {
     public class WhoInfo
     {
